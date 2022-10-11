@@ -1,0 +1,64 @@
+{
+  "name": "@de-mklinger/cypher-shell-statement-parser",
+  "description": "TypeScript port of Neo4j Shell Statement Parser",
+  "version": "0.0.1",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "author": "Marc Klinger <mklinger@mklinger.de>",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-xo": "^0.42.0",
+    "eslint-config-xo-typescript": "^0.53.0",
+    "prettier": "^2.7.1",
+    "ts-jest": "^29.0.3",
+    "tsup": "^6.2.3",
+    "typescript": "^4.8.4"
+  },
+  "scripts": {
+    "build": "tsup ./src/index.ts --dts --format esm,cjs --sourcemap",
+    "watch": "tsup ./src/index.ts --dts --format esm,cjs --sourcemap --watch ./src/",
+    "lint": "eslint ./src/**/*.ts",
+    "prettier": "prettier -c ./src",
+    "fix:lint": "eslint ./src/**/*.ts --fix",
+    "fix:prettier": "prettier -w ./src",
+    "test": "jest"
+  },
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "eslintConfig": {
+    "env": {
+      "es2021": true,
+      "node": true
+    },
+    "extends": [
+      "xo",
+      "xo-typescript",
+      "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "@typescript-eslint/comma-dangle": "off"
+    },
+    "ignorePatterns": [
+      "dist"
+    ]
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  }
+}
